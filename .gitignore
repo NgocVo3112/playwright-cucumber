@@ -1,0 +1,10 @@
+node_modules/
+/test-results/
+/playwright-report/
+/playwright/.cache/
+/test-results/
+cucumber-report.html
+assets
+features
+@retun.text
+index.html
