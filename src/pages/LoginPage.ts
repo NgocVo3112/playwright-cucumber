@@ -1,11 +1,15 @@
 import { Page } from '@playwright/test';
+import Assert from '../helper/util/wrapper/assert';
 import PlaywrightWrapper from '../helper/util/wrapper/PlaywrightWrappers';
 
 export default class BooksPage {
 
 	private base: PlaywrightWrapper
+	private assert : Assert
+
 	constructor(private page: Page) {
 		this.base = new PlaywrightWrapper(page);
+		this.assert = new Assert(page);
 	}
 
 	private productPageElements = {
