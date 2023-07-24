@@ -12,7 +12,6 @@ let context: BrowserContext;
 
 BeforeAll(async function () {
 	getEnv();
-	// browser = await chromium.launch({ headless: true });
 	browser = await invokeBrowser();
 });
 

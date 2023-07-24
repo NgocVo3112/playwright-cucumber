@@ -6,7 +6,6 @@ setDefaultTimeout(60 * 1000 * 2)
 
 Given('User navigates to the application', async function () {
 	await fixture.page.goto(process.env.BASEURL);
-	fixture.logger.info("navigates to the application");
 });
 
 Given('User click on the login link', async function () {
@@ -29,7 +28,7 @@ When('User click on the login button', async function () {
 
 Then('Login should be success', async function () {
 	const text = await fixture.page.locator('//button[contains(@class,"mat-focus-indicator mat-menu-trigger")]//span[1]').textContent();
-	fixture.logger.info("Username: " + text);
+	// fixture.logger.info("Username: " + text);
 
 });
 Then('Login should fail', async function () {
