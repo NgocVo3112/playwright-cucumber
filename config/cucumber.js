@@ -5,10 +5,10 @@ module.exports = {
             snippetInterface: "async-await"
         },
         paths: [
-            "src/test/features/"
+            "src/test/features/basicSearchFlow.feature"
         ],
         publishQuiet: true,
-        dryRun: false,
+        dryRun: !true,
         require: [
             "src/test/steps/*.ts",
             "src/hooks/hooks.ts"
@@ -23,7 +23,7 @@ module.exports = {
             "rerun:@rerun.txt"
         ],
         parallel: 4,
-		retry: 1
+		retry: 0
     },
     rerun: {
         formatOptions: {

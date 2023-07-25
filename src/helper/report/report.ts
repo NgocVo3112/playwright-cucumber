@@ -4,7 +4,7 @@ report.generate({
     jsonDir: "test-results",
     reportPath: "test-results/reports/",
     reportName: "Playwright Automation Report",
-    pageTitle: "Product filter test report",
+    pageTitle: "MarsAir test report",
     displayDuration: false,
     metadata: {
         browser: {

@@ -2,13 +2,13 @@ import { Page, expect } from "@playwright/test";
 
 export default class PlaywrightWrapper {
 
-    constructor(private page: Page) { }
+	constructor(private page: Page) { }
 
-    async goto(url: string) {
-        await this.page.goto(url, {
-            waitUntil: "domcontentloaded"
-        });
-    }
+	async goto(url: string) {
+		await this.page.goto(url, {
+			waitUntil: "domcontentloaded"
+		});
+	}
 
 	public async getText(locator: string) {
 		return this.page.locator(locator).textContent();
@@ -59,6 +59,59 @@ export default class PlaywrightWrapper {
 
 	public getUrl(): string {
 		return this.page.url();
+	}
+
+	public async setInputFile(locator: string, file: string) {
+		await this.page.setInputFiles(locator, file);
+	}
+
+	public async getInputValue(locator: string) {
+		const text = await this.page.locator(locator).inputValue();
+		return text;
+	}
+
+	public async verifyTitleOfBrowser(title: string) {
+		await expect(this.page).toHaveTitle(title);
+	}
+
+	public async pressEscape() {
+		await this.page.keyboard.press('Escape');
+	}
+
+	public async pressEnter() {
+		await this.page.keyboard.press('Enter');
+	}
+
+	public async getNumberFromString(string: string) {
+		const num = string.replace(/[^0-9]/g, '');
+		return parseInt(num);
+	}
+
+	public async typeKeyboard(text: string) {
+		return this.page.keyboard.type(text);
+	}
+
+	public async goBack() {
+		return this.page.goBack();
+	}
+
+	public async goForward() {
+		return this.page.goForward();
+	}
+
+	public async split(text: string, splitAt: string, chartReturn: number) {
+		const chars = text.split(splitAt);
+		return chars[chartReturn].toString();
+	}
+
+	public async getChartAt(text: string, index: number) {
+		const chars = text.charAt(index);
+		return chars.toString();
+	}
+
+	public async replace(oldStr: string, replaceText: string, newStr: string) {
+		const result = oldStr.replace(replaceText, newStr);
+		return result.toString();
 	}
 
 }
