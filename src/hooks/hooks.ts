@@ -26,23 +26,10 @@ Before(async function ({ pickle }) {
 });
 
 After(async function ({ pickle, result }) {
-	// let videoPath: string;
-	// let img: Buffer;
-	// if (result?.status == Status.FAILED) {
-	// 	img = await fixture.page.screenshot({ path: `./test-results/screenshots/${pickle.name}.png`, type: "png" })
-	// 	videoPath = await fixture.page.video().path();
-	// }
+	const img = await fixture.page.screenshot({ path: `./test-results/screenshots/${pickle.name}.png`, type: "png" })
+	await this.attach(img, "image/png");
 	await fixture.page.close();
 	await context.close();
-	// if (result?.status == Status.FAILED) {
-	// 	await this.attach(
-	// 		img, "image/png"
-	// 	);
-	// 	await this.attach(
-	// 		fs.readFileSync(videoPath),
-	// 		'video/webm'
-	// 	);
-	// }
 })
 
 AfterAll(async function () {

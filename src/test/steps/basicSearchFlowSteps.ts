@@ -17,7 +17,7 @@ Given('User select Departing as {string}', async function (departing) {
 	await searchPage.selectDeparting(departing);
 });
 
-Given('User enter the Returning as {string}', async function (returning) {
+Given('User select the Returning as {string}', async function (returning) {
 	await searchPage.selectReturning(returning);
 });
 

@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"pretest": "npx ts-node src/helper/report/init.ts",
-		"test": "cross-env ENV=prod cucumber-js --config=config/cucumber.js || true ",
+		"test": "cross-env ENV=prod TAGS=@test cucumber-js --config=config/cucumber.js || true ",
 		"posttest": "npx ts-node src/helper/report/report.ts",
 		"test:failed": "cross-env ENV=prod cucumber-js --config=config/cucumber.js -p rerun @rerun.txt"
 	},
