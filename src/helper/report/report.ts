@@ -20,7 +20,7 @@ report.generate({
     customData: {
         title: "Test Info",
         data: [
-            { label: "Project", value: "Product filter Application" },
+            { label: "Project", value: "MarsAir test report" },
             { label: "Release", value: "1.2.3" },
             { label: "Cycle", value: "Smoke-1" }
         ],

@@ -5,6 +5,5 @@ node_modules/
 /test-results/
 cucumber-report.html
 assets
-features
 @retun.text
 index.html
