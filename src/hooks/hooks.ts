@@ -18,19 +18,33 @@ Before(async function ({ pickle }) {
 	const scenarioName = pickle.name + pickle.id
 	context = await browser.newContext({
 		recordVideo: {
-			dir: "test-results/videos"
-		}
+			dir: "test-results/videos",
+		},
 	});
-	const page = await browser.newPage();
+	const page = await context.newPage();
 	fixture.page = page;
 });
 
 After(async function ({ pickle, result }) {
-	const img = await fixture.page.screenshot({ path: `./test-results/screenshots/${pickle.name}.png`, type: "png" })
-	await this.attach(img, "image/png");
+	let videoPath: string;
+	let img: Buffer;
+	if (result?.status == Status.FAILED) {
+		img = await fixture.page.screenshot({ path: `./test-results/screenshots/${pickle.name}.png`, type: "png" })
+		videoPath = await fixture.page.video().path();
+	}
 	await fixture.page.close();
 	await context.close();
-})
+	if (result?.status == Status.FAILED) {
+		await this.attach(
+			img, "image/png"
+		);
+		await this.attach(
+			fs.readFileSync(videoPath),
+			'video/webm'
+		);
+	}
+
+});
 
 AfterAll(async function () {
 	await browser.close();
