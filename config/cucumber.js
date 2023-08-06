@@ -1,6 +1,7 @@
 module.exports = {
     default: {
         tags: process.env.TAGS || "",
+        BROWSER: process.env.BROWSER,
         formatOptions: {
             snippetInterface: "async-await"
         },

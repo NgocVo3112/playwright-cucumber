@@ -57,6 +57,7 @@ Feature: Basic Search flow
       | July      | December (two years from now) | JJ0-OPQ-325      |
       | July      | December (two years from now) | @F3-FJK-418      |
 
+  @smoke
   Scenario Outline: Basic Search flow - Verify the availability of seats when seats are available without input promotional code
     And User select Departing as "<departing>"
     And User select the Returning as "<returning>"
